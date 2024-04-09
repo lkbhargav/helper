@@ -22,7 +22,7 @@ func (s *Stack) Pop() any {
 	return toReturn
 }
 
-func (s *Stack) Length() int {
+func (s *Stack) Len() int {
 	return len(s.val)
 }
 

@@ -23,7 +23,7 @@ func (q *Queue) DeQueue() any {
 	return toReturn
 }
 
-func (q *Queue) Length() int {
+func (q *Queue) Len() int {
 	return len(q.val)
 }
 
