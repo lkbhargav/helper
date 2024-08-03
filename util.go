@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
+	"golang.org/x/exp/constraints"
 )
 
 // err: Actual error
@@ -39,20 +40,20 @@ func StringToIntArr(inp string, separator string) (resp []int, err error) {
 }
 
 // return comma seperated string values for the given int array
-func IntArrToStr(inp []int) (res string) {
+func NumArrToStr[T comparable](inp []T) (res string) {
 	for i, v := range inp {
 		if i == 0 {
-			res = fmt.Sprintf("%d", v)
+			res = fmt.Sprintf("%v", v)
 			continue
 		}
 
-		res = fmt.Sprintf("%s,%d", res, v)
+		res = fmt.Sprintf("%s,%v", res, v)
 	}
 
 	return
 }
 
-func Contains(data []any, toFind any) bool {
+func Contains[T comparable](data []T, toFind T) bool {
 	for _, v := range data {
 		if v == toFind {
 			return true
@@ -60,4 +61,26 @@ func Contains(data []any, toFind any) bool {
 	}
 
 	return false
+}
+
+func Max[T constraints.Ordered](nums ...T) T {
+	max := nums[0]
+	for _, n := range nums {
+		if max < n {
+			max = n
+		}
+	}
+
+	return max
+}
+
+func Min[T constraints.Ordered](nums ...T) T {
+	min := nums[0]
+	for _, n := range nums {
+		if min > n {
+			min = n
+		}
+	}
+
+	return min
 }

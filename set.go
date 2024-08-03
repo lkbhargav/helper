@@ -1,23 +1,23 @@
 package helper
 
-type Set struct {
-	set map[any]bool
+type Set[T comparable] struct {
+	set map[T]bool
 }
 
-func NewSet() Set {
-	return Set{
-		set: make(map[any]bool),
+func NewSet[T comparable]() Set[T] {
+	return Set[T]{
+		set: make(map[T]bool),
 	}
 }
 
-func (s *Set) Insert(k any) {
+func (s *Set[T]) Insert(k T) {
 	s.set[k] = true
 }
 
-func (s *Set) Find(k any) bool {
+func (s *Set[T]) Find(k T) bool {
 	return s.set[k]
 }
 
-func (s *Set) Len() int {
+func (s *Set[T]) Len() int {
 	return len(s.set)
 }
