@@ -2,11 +2,11 @@ package helper
 
 import "fmt"
 
-type Queue[T comparable] struct {
+type Queue[T any] struct {
 	val []T
 }
 
-func NewQueue[T comparable]() Queue[T] {
+func NewQueue[T any]() Queue[T] {
 	return Queue[T]{
 		val: []T{},
 	}

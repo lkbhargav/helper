@@ -2,11 +2,11 @@ package helper
 
 import "fmt"
 
-type Stack[T comparable] struct {
+type Stack[T any] struct {
 	val []T
 }
 
-func NewStack[T comparable]() Stack[T] {
+func NewStack[T any]() Stack[T] {
 	return Stack[T]{
 		val: []T{},
 	}
